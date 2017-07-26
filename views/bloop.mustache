@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>todoList</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  </head>
-  <body>
-    <header>
-      <h1>To-Do List App</h1>
-    </header>
+
+<head>
+  <meta charset="utf-8">
+  <title>todoList</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>To-Do List App</h1>
+  </header>
 
   <section>
 
-    <form id="todo" action="/" method="post">
+    <form id="input" action="/" method="POST">
       <input class="input" type="text" name="item" placeholder="Add Task" value="">
       <input class="button" type="submit" name="" value="add">
     </form>
 
-    <form class="doing" action="/update" method="post">
-      <h2>Left To Do</h2>
-      <ul id="todo">
-        {{#todos}}
-       <li><input type="checkbox" value="submit">{{todo}}</li>
-        {{/todos}}
-      </ul>
-    </form>
+    <h2>Left To Do</h2>
+    <ul id="todo">
+      {{#todos}}
+        <li>
+          <form class="todo" action="/{{id}}" method="POST">
+            <input type="submit" value="submit" />
+            <span>{{text}}</span>
+          </form>
+        </li>
+      {{/todos}}
+    </ul>
 
     <h2>Done</h2>
-      <ul id="done">
-
+    <ul id="done">
+      {{#done}}
         <li>{{todo}}</li>
-
-      </ul>
+      {{/done}}
+    </ul>
 
   </section>
 
-  </body>
+</body>
+
 </html>
